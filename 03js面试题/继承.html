@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1. 原型继承
+    //  function A() {
+    //      this.a =1,
+    //      this.b=2,
+    //      this.c=3
+    //      console.log(this.a);
+    //      A.prototype = {
+    //          getA:function () {
+    //              console.log(this.a);
+    //          }
+             
+    //      }
+    //  }
+    //  function B() {
+    //      console.log("c");
+    //      this.y = 33333;
+    //      console.log(this.y);         
+    //  }
+    //  B.prototype = new A()
+    //  let f = new A();
+    //  let y = new B();
+    // //  存在问题，子类可以重写父类的原型的方法，如果重写了，那么父类的其他子类调取使用的时候也会改变
+    // // B.prototype.__proto__.prototype.getA=null;
+    // // 2.子类上的原型方法也会没有
+
+    // 2. call继承:问题：无法A的原型上的方法不能使用
+    // function A(){
+    //     this.a = 123;
+    //     this.b = 234;
+    //     A.prototype = {
+    //         getX:function () {
+    //             console.log(this.a);
+    //         }
+    //     }
+        
+    // }
+    // function B() {
+    //      A.call(this)
+    //      console.log(this.a,this.b);        
+    // }
+
+    // let y = new B()
+    
+    // 3.寄生组合继承
+    // function A() {
+    //     this.a = 123;
+    //     this.b = 234;
+    //     A.prototype = {
+    //         constructor:A,
+    //         getX:function () {
+    //             console.log(this.a);
+    //         }
+    //     }
+    // }
+    // function B() {
+    //     a.call(this)
+    //     console.log(this.a);
+    // }
+    // B.prototype = Object.create(A.prototype)
+    // let y = new A();
+    </script>
+</body>
+</html>

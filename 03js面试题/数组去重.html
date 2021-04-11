@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 对象键值对处理：现在外层定义一个对象变量，把变量的属性作为数组的值，先定义属性，把属性赋值为true，循环数组，如果属性的值不为undefined
+    // 就证明当前  
+    let arr = [12,3,4,5,6,6,7,7,7,7,53,3];
+    Array.prototype.reque = function () {
+        let thisArr = [...this];
+        let obj = {}
+        for (let i = 0; i < thisArr.length; i++) {
+            let objItem = thisArr[i]
+            if (typeof obj[objItem]!=="undefined") {
+                thisArr[i] = thisArr[thisArr.length-1];
+                thisArr.length--;
+                i--
+            }
+            obj[objItem] = true
+        }
+        console.log(thisArr);
+        return thisArr
+    }
+    arr.reque()
+    </script>
+</body>
+</html>

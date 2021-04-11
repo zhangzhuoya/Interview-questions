@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    // script 标签 有src属性，可以跨域发送网络请求
+    // script虽然可以引用其他跨域资源，浏览器不限制。
+    // 但是浏览器会将返回的内容执行，作为代码执行
+    // JSONP原理
+    // 1、 判断请求是否和当前界面同源。 如果同源则正常的ajax，就没有跨域的事情
+    // 2，如果不同源，会生成一个script，
+    // 3.在生成一个随机的callback名字，还创建一个名为这个的方法
+    // 4. 设置script标签的src，设置为请求的接口
+    // 5. 将callback作为参数拼接在后面
+    // 6. 后端接受到请求后，开始准备返回的数据
+    // 7.后端拼接数据，将要返回的数据用callback值和括号包裹起来
+    // 8. 返回内容
+    // 9. 浏览器接收到内容。将js代码执行
+    // 10.执行asd方法，这样我们就接受到了后端返回的对象。
+    
+    </script>
+</body>
+</html>

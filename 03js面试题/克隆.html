@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      // 混合 obj2的属性全部保留 混合到obj
+      function mixin(obj1, obj2) {
+        var newObj = {}; //简历一个新对象，给她加入属性
+        //   赋值obj2的属性
+        for (var prop in obj2) {
+          newObj[prop] = obj2[prop];
+        }
+        //   找到obj1中有obj2中没有的属性
+        for (const prop in obj1) {
+          if (!(prop in obj2)) {
+            newObj[prop] = obj1[prop];
+          }
+        }
+        return newObj;
+      }
+      let obj1 = {
+        a: 1,
+        b: 2,
+      };
+      Object.assign(obj1, obj2); //缺陷 obj1也会发生变化，obj2赋值给obj1,返回obj2
+      Object.assign({}, obj1, obj2);
+      clone();
+      //   当写一个复杂的函数，有很多的参数
+
+      function complicate(option) {}
+
+      // 对象克隆
+      function clone(obj, deep) {
+        if (Array.isArray(obj)) {
+          if (deep) {
+            let newArr = [];
+            for (let i = 0; i < obj.length; i++) {
+              newArr.push(this.clone(obj[i], deep));
+            }
+            return newArr;
+          } else {
+            return obj.slice();
+          }
+        } else if (typeof obj === "object") {
+          var newObj = {};
+          for (const prop in obj) {
+            if (deep) {
+              newObj[prop] = this.clone(obj[prop], deep);
+            } else {
+              newObj[prop] = obj[prop];
+            }
+          }
+          return newObj;
+        } else {
+          return obj;
+        }
+      }
+    </script> -->
+
+    <script>
+   let obj = {"a":123,"b":{"a":123,"c":23}}
+   let obj2 = {...obj}
+   console.log(obj2==obj);
+    </script>
+  </body>
+</html>

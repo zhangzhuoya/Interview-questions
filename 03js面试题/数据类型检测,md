@@ -1,0 +1,13 @@
++ typeof 
++ instanceof
++ constructor
++ Object.prototype.toString.call(value)
++ Array.isArray()检测数组
++ JQ源码，分装自己的数据类型方法 
+为啥typeof null--->"object"
+1. 所有的数据类型在计算机中都是按二进制存储的
+number：整数：是以1开始的 浮点：010 字符串：100开始的 布尔类型：110 对象：000 undefined：-2^30 null:00000
++typeof 的底层机制就是判断这些二进制的值 所以如果是以000开始的都是对象（特殊性：但是会排除函数），返回的是"object",
+此时我们发现null中枪了
+稳定性和性能是很好的，而且用起来也简单，所以typeof经常用
+
