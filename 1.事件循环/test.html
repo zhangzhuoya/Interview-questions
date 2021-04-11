@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(1);
+      setTimeout(function func() {
+        console.log(2); //还是最后输出2
+      }, 1000); //时间改成0
+      console.log(3);
+      for (let index = 0; index < 1000; index++) {
+        console.log(3);
+      }
+// 
+       
+    </script>
+  </body>
+</html>
