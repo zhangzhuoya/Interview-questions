@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <button id="cancel">取消</button>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const cancel = document.getElementById("cancel");
+
+
+        // const des = 
+        const change = function (e) {
+            console.log( 'eee');
+            return 'return abc'
+        }
+        const d = debounce(change, 2000, true)
+        const temp = ()=>{
+            d().then(res=>{
+            console.log(res,'lplplp');
+        });
+        }
+        btn.onclick =temp 
+        cancel.onclick = d.cancel;
+
+        // function callbackFn(args,args2) {
+        //     console.log(111,args,args2);
+        // }
+        function debounce(callback, await, inmate = false) {
+                let timer = null;
+                let _isInmate = false;
+                const _de = function () {
+                    // console.log(inmate,'_isInmate_isInmate');
+                    return new Promise(res=>{
+                        if (timer) {
+                        clearTimeout(timer);
+                    }
+                    if (inmate && !_isInmate) {
+                        callback(...arguments);
+                        _isInmate = true
+                        // console.log(_isInmate,'ppp');
+                    } else {
+                        timer = setTimeout(() => {
+                            // console.log(arguments,'kkk');
+                            _isInmate = false;
+                            const backValue = callback.apply(this, arguments);
+                            res(backValue)
+                        }, await)
+                    }
+                    }) 
+                   
+                }
+                _de.cancel = function () {
+                    console.log('eeee');
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                        _isInmate = false;
+                    }
+                }
+                return _de;
+
+        }
+    </script>
+</body>
+
+</html>

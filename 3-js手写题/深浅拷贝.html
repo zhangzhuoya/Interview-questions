@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const s = Symbol('sy1');
+        let obj = {
+            name: 'zhangsan',
+            loveCity: ["beijing", "shanghai", "guangzhou", {
+                'ci': {
+                    a: 1
+                }
+            }],
+            [s]: 2,
+            sy1: Symbol('sss1'),
+            hobby: {
+                hobby1: 'smoke',
+                hobby2: 'drink',
+            },
+            set: new Set([1, 2, 3])
+        }
+        obj.aa = obj;
+        function deepClone(obj, map = new Map()) {
+            const cloneObj = Array.isArray(obj) ? [] : {};
+            const sys = Object.getOwnPropertySymbols(obj);
+            for (const key of sys) {
+                cloneObj[key] = obj[key];
+            }
+
+            for (let key in obj) {
+                cloneObj[key] = obj[key];
+                if (Object.prototype.toString.call(obj[key]) === '[object Object]' || Array.isArray(obj[key])) {
+                    console.log(obj[key], 'obj[key]');
+                    cloneObj[key] = deepClone(obj[key]);
+                    if (map.has(obj[key])) {
+                    cloneObj[key] = map.get(obj)
+                    return cloneObj;
+                }
+                map.set(obj, cloneObj);
+                }
+               
+            }
+            return cloneObj;
+        }
+        const obj1 = deepClone(obj);
+        console.log(deepClone(obj));
+        obj.loveCity[3].ci.a = '111';
+        console.log(obj1, 'obj1obj1');
+        console.log(obj);
+    </script>
+</body>
+
+</html>
