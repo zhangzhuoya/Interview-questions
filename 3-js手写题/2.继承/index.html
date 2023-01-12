@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型继承
+        function People(name, age, city) {
+            this.name = name;
+            this.age = age;
+            this.city = city;
+        }
+        People.prototype = {
+            getCity() {
+                console.log(this.city);
+            },
+            getName() {
+                console.log(this.name);
+            }
+        }
+        function Man(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        Man.prototype = new People();
+        const man1 = new Man('lisi','23');
+        // const people1 = new People('zhangsan', '18', ["beijing", "shanghai"]);
+        // people1.getCity();
+        Man.prototype.__proto__.getName = null;
+        man1.getName();
+        // console.log(Man.prototype.__proto__,'Man.prototype.__proto__');
+        // console.log(people1.name);
+    </script>
+</body>
+
+</html>
