@@ -11,31 +11,90 @@
 <body>
     <script>
         // 原型继承
-        function People(name, age, city) {
-            this.name = name;
-            this.age = age;
-            this.city = city;
-        }
-        People.prototype = {
-            getCity() {
-                console.log(this.city);
-            },
-            getName() {
+        // function People(name, age, city) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.city = city;
+        // }
+        // People.prototype = {
+        //     getCity() {
+        //         console.log(this.city);
+        //     },
+        //     getName() {
+        //         console.log(this.name);
+        //     }
+        // }
+        // function Man(name,age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // Man.prototype = new People();
+        // const man1 = new Man('lisi','23');
+        // // const people1 = new People('zhangsan', '18', ["beijing", "shanghai"]);
+        // // people1.getCity();
+        // Man.prototype.__proto__.getName = null;
+        // man1.getName();
+        // console.log(Man.prototype.__proto__,'Man.prototype.__proto__');
+        // console.log(people1.name);
+
+
+        // call继承=> 1. 在子类的构造函数中执行父类函数，让父类中的this变成子类的实例，==》把父类当成普通函数执行，和父类的原型没有关系，不能继承
+        // function People(name,age,sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+        // People.prototype.getName = function() {
+        //     console.log(this.name);
+        // }
+        // function Man(love) {
+        //     People.call(this,'name','age','sex');
+        // }
+        // const p1 = new People('zhangsan',12,'man')
+        // const m1 = new Man('play');
+        // console.log(m1);
+
+        // 寄生组合继承
+        // function People(name,age,sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+        // People.prototype.getLove = function() {
+        //     console.log(this.love);
+        // }
+        // function Man(love) {
+        //     People.call(this,'name','age','sex');
+        //     this.love = love
+        // }
+        // Man.prototype = Object.create(People.prototype)
+        // const p1 = new People('zhangsan',12,'man')
+        // const m1 = new Man('play');
+        // // m1.__proto__.getLove = null;
+        // m1.getLove();
+        // console.log(m1.sex);
+
+        // es6继承
+        class A {
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            static getName() {
                 console.log(this.name);
             }
         }
-        function Man(name,age) {
-            this.name = name;
-            this.age = age;
+        class B extends A {
+
+            constructor(name) {
+                super();
+                this.name = name;
+            }
         }
-        Man.prototype = new People();
-        const man1 = new Man('lisi','23');
-        // const people1 = new People('zhangsan', '18', ["beijing", "shanghai"]);
-        // people1.getCity();
-        Man.prototype.__proto__.getName = null;
-        man1.getName();
-        // console.log(Man.prototype.__proto__,'Man.prototype.__proto__');
-        // console.log(people1.name);
+        const a1 = new A('zhansan',12);
+        const b1 = new B('lisi',23)
+        console.log(b1.name);
+
     </script>
 </body>
 
